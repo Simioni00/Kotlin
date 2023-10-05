@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
+import android.view.View
+import android.content.Intent
 
 class PagamentoActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -16,5 +18,20 @@ class PagamentoActivity : AppCompatActivity() {
             Toast.makeText(this, "Ops! Algo deu errado ao carregar a página de pagamento.", Toast.LENGTH_SHORT).show()
             finish() // Pode decidir finalizar a atividade se ocorrer um erro
         }
+
+        
     }
+
+    fun onClickMainActivity(view: View) {
+        try {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        } catch (e: Exception) {
+            // Lidar com erros ao iniciar a próxima atividade
+            Log.e("OutraAtividade", "Erro ao iniciar a MainActivity: ${e.message}")
+            Toast.makeText(this, "Ops! Algo deu errado. Por favor, tente novamente.", Toast.LENGTH_SHORT).show()
+        }
+
+    }
+
 }
