@@ -1,10 +1,12 @@
 package com.example.kotlin_trabalho
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import com.example.kotlin_trabalho.databinding.FragmentSecondBinding
 
@@ -13,7 +15,7 @@ import com.example.kotlin_trabalho.databinding.FragmentSecondBinding
  */
 class SecondFragment : Fragment() {
 
-private var _binding: FragmentSecondBinding? = null
+    private var _binding: FragmentSecondBinding? = null
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
@@ -22,10 +24,16 @@ private var _binding: FragmentSecondBinding? = null
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
-      _binding = FragmentSecondBinding.inflate(inflater, container, false)
-      return binding.root
-
+        try {
+            _binding = FragmentSecondBinding.inflate(inflater, container, false)
+            return binding.root
+        } catch (e: Exception) {
+            // Lidar com erros na inicialização do Fragment
+            Log.e("SecondFragment", "Erro na inicialização do Fragment: ${e.message}")
+            Toast.makeText(requireContext(), "Ops! Algo deu errado. Tente novamente.", Toast.LENGTH_SHORT).show()
+            // Pode decidir não retornar a view se algo der errado
+            return null
+        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -35,7 +43,8 @@ private var _binding: FragmentSecondBinding? = null
             findNavController().navigate(R.id.action_SecondFragment_to_FirstFragment)
         }
     }
-override fun onDestroyView() {
+
+    override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }

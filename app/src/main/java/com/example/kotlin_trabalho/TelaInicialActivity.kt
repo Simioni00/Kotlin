@@ -1,9 +1,11 @@
 package com.example.kotlin_trabalho
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 
 class TelaInicialActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -12,8 +14,13 @@ class TelaInicialActivity : AppCompatActivity() {
     }
 
     fun onClickProximaPagina(view: View) {
-        val intent = Intent(this, TelaSecundariaActivity::class.java)
-        startActivity(intent)
+        try {
+            val intent = Intent(this, TelaSecundariaActivity::class.java)
+            startActivity(intent)
+        } catch (e: Exception) {
+            // Lidar com erros ao iniciar a próxima atividade
+            Log.e("TelaInicialActivity", "Erro ao iniciar a próxima atividade: ${e.message}")
+            Toast.makeText(this, "Ops! Algo deu errado. Por favor, tente novamente.", Toast.LENGTH_SHORT).show()
+        }
     }
-
 }
