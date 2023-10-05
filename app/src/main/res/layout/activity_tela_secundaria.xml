@@ -8,6 +8,8 @@
     android:background="@color/greenlight"
     tools:context=".TelaSecundariaActivity">
 
+
+
     <TextView
         android:id="@+id/textView2"
         android:layout_width="match_parent"
@@ -45,4 +47,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2"
         app:layout_constraintVertical_bias="1.0" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

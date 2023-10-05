@@ -22,7 +22,8 @@
         android:id="@+id/btnOpenMainActivity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:onClick="onClickMainActivity"
         android:text="proximo"
-        android:onClick="onClickMainActivity" />
+        android:layout_gravity="center" />
 
 </LinearLayout>
