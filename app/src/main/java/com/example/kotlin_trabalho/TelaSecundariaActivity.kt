@@ -11,6 +11,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.kotlin_trabalho.Adapter.AdapterProduto
 import com.example.kotlin_trabalho.model.Produto
+import android.content.Context
+import android.content.SharedPreferences
+import com.example.kotlin_trabalho.controllers.ProdutoController
+
 
 class TelaSecundariaActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -60,9 +64,17 @@ class TelaSecundariaActivity : AppCompatActivity() {
         )
         listaProdutos.add(produto5)
     }
+    val produto5 = Produto(
+        R.drawable.morango,
+        "Morango",
+        "10,00"
+    )
+
+    val produtoController = ProdutoController(this)
 
     fun onClickPaginaPagamento(view: View) {
         try {
+            produtoController.adicionarProduto(produto5)
             val intent = Intent(this, PagamentoActivity::class.java)
             startActivity(intent)
         } catch (e: Exception) {
