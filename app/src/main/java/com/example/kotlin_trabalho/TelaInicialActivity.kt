@@ -7,7 +7,6 @@ import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 
-
 class TelaInicialActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -31,3 +30,14 @@ class TelaInicialActivity : AppCompatActivity() {
         startActivity(intent)
     }
 }
+
+
+
+
+
+
+
+
+
+
+
