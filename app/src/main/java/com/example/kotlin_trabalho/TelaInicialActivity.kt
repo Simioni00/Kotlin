@@ -7,7 +7,9 @@ import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 
+
 class TelaInicialActivity : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_inicialmain)
@@ -22,5 +24,10 @@ class TelaInicialActivity : AppCompatActivity() {
             Log.e("TelaInicialActivity", "Erro ao iniciar a próxima atividade: ${e.message}")
             Toast.makeText(this, "Ops! Algo deu errado. Por favor, tente novamente.", Toast.LENGTH_SHORT).show()
         }
+    }
+
+    fun onClickIrParaTelaCadastro(view: View) {
+        val intent = Intent(this, CadastroActivity::class.java)
+        startActivity(intent)
     }
 }
